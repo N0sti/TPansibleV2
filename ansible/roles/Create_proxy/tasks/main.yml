@@ -1,0 +1,12 @@
+---
+- name: Run Nginx container
+  docker_container:
+    name: http-server
+    image: nostiii/tp-devops-httpd
+    state: started
+    networks:
+      - name: my-network
+    ports:
+      - "8080:80"  # Exposer le port 80 du conteneur sur le port 8080 de l'hôte
+  vars: 
+    ansible_python_interpreter: /opt/docker_venv/bin/python

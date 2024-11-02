@@ -1,0 +1,16 @@
+---
+- name: Run database container
+  docker_container:
+    name: my-db
+    image: nostiii/tp-devops-database
+    state: started
+    restart_policy: always
+    env:
+      POSTGRES_USER: user
+      POSTGRES_PASSWORD: pwd
+      POSTGRES_DB: db
+      
+    networks:
+      - name: my-network
+  vars: 
+    ansible_python_interpreter: /opt/docker_venv/bin/python

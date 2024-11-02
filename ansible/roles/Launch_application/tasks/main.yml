@@ -1,0 +1,14 @@
+---
+- name: Run application container
+  docker_container:
+    name: my-api
+    image: nostiii/tp-devops-simple-api
+    state: started
+    restart_policy: always
+    networks:
+      - name: my-network
+    published_ports:
+      - "80:80"  # Exposer le port 80
+  vars: 
+    ansible_python_interpreter: /opt/docker_venv/bin/python
+
